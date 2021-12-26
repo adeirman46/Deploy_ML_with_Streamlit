@@ -18,7 +18,12 @@ pipe = pickle.load(open('penguin_pipeline.pkl', 'rb'))
 st.title('Penguin Machine Learning Classifier')
 st.write('Classifying Penguin to 3 categories and train the model on the fly!')
 st.subheader('Training Classification Model')
+
 # Create penguin data loader
+password_guess = st.text_input('What is the Password?')
+if password_guess != st.secrets['password']:
+    st.stop()
+    
 data = st.file_uploader(label='Upload your own penguin data')
 
 @st.cache()
